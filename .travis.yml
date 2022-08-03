@@ -17,10 +17,10 @@ after_success:
   #login to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   #take those images and push them to docker hub
-  - docker push multi-client
-  - docker push multi-server
-  - docker push multi-worker
-  - docker push multi-nginx
+  - docker push crkepler/multi-client
+  - docker push crkepler/multi-server
+  - docker push crkepler/multi-worker
+  - docker push crkepler/multi-nginx
 
 #EBS will look at the docker-compose.yml file to make its own deployment, apart from Travis
 deploy:
@@ -33,6 +33,6 @@ deploy:
   on:
     branch: main
   access_key_id: $AWS_ACCESS_KEY
-  secret_access_key: "$AWS_SECRET_KEY"
+  secret_access_key: $AWS_SECRET_KEY
 
 
